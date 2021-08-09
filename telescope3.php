@@ -1,13 +1,4 @@
 <?php
-/*
-kiosk_id: 3
-email: "stephen.bannasch@gmail.com"
-observation: "Whirlpool Galaxy (M51)"
-datetime_when_user_made_request_at_kiosk: "2021-06-03 10:13:36.214899 -0400"
-credential: 1114c7c1d689b28d3e21178c47136be21899050022084b856fea4277966f927
-
-
-*/
 $message='HTTP 400';
 ////////////////////////////////////////////////////////////////////////////////
 $kiosk_id = $_POST[ "kiosk_id" ];

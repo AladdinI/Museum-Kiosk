@@ -11,7 +11,7 @@
 <script>
   formElem.onsubmit = async (e) => {
     e.preventDefault();
-    let response = await fetch('telescope3.php', {
+    let response = await fetch('https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/requests/telescope.php', {
       method: 'POST',
       body: new FormData(formElem)
     });
