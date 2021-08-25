@@ -69,13 +69,8 @@ formCors.onsubmit = async (e) => {
       },
       body: formData
     })
-    .then(response => response.text())
-    .then((data) => {
-      return data ? JSON.parse(data) : {};
-    })
-    .then(result => {
-      displayAlert(result);
-    })
+    .then(response => response.json())
+    .then(result => displayAlert(result))
     .catch(error => {
       alert('Error:', error);
     });
