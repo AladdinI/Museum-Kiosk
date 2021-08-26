@@ -7,9 +7,8 @@
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties */
 :root {
   /* colors */
-  --toggle-fullscreen: rgba(80, 80, 80, 128);
-  --toggle-fullscreen-hover: rgba(196, 196, 196, 196);
   --almost-black: #080808;
+  --almost-white: #e8e8e8;
   --green: #a4d292;
   --bright-green: #bff5aa;
   --brighter-green: #cfffbb;
@@ -17,27 +16,10 @@
   --dark-teal: #2b88ac;
   --bright-blue: #032741;
   --bright-pink: #f33c85;
-  --category-selected-border: #f43c86;
-  --category-not-selected-border: #202e31;
-  --canvas-container-border-color: lightgray;
-  --canvas-container-border-color-fullscreen: #222;
   /* font sizes */
-  --menu-page-title: 7.4vh;
-  --menu-page-subtitle: 3vh;
-  --menu-activity-category-title: 2.2vh;
-  --menu-activity-category-page-title: 2vh;
-  --menu-activity-category-page-subtitle: 1.8vh;
-  --menu-category-page-name: 1.7vh;
-  --menu-category-page-telescope: 1.5vh;
-  --menu-activity-page-title: 2.8vh;
-  --page-title: 3.4vh;
-  --page-subtitle: 2vh;
-  --animate-icons: 3.2vh;
-  --control-title: 1.6vh;
-  --control-subtitle: 1.6vh;
-  --about-your-image: 2.8vh;
-  --save-and-send-context: 2vh;
-  --send-email-input: 1.6vh;
+  --content-font-size: 1.2em;
+  --header-font-size: 1.4em;
+  --results-font-size: 0.8em;
 }
 
 body {
@@ -48,23 +30,48 @@ body {
   padding: 0;
 }
 
-header {
-  padding: 1em 0em 0.5em 0em !important;
-}
-
-.test-email-container {
-  margin-top: 20vh;
+.content {
+  font-size: var(--content-font-size);
 }
 
 #canvas {
-  margin: 2em;
   border: 1px solid var(--bright-green);
   width: 300px;
   height: 300px;
 }
 
+.results-container {
+  margin: 2em 0em 0em 0em;
+}
+
+#results {
+  margin: 1em 0em 0em 0em;
+  padding: 1em;
+  height: 40vh;
+  background-color: var(--almost-white);
+  font-size: var(--results-font-size);
+  color: gray;
+}
+
+#results code {
+  color: var(--almost-black);
+  font-size: var(--results-font-size);
+}
+
+header {
+  padding: 1em 0em 0.5em 0em !important;
+  font-size: var(--header-font-size);
+  color: var(--bright-teal);
+}
+
+.image {
+  color: var(--bright-teal);
+  padding: 2vh 2vw 4vh 3vw;
+  background-color: black;
+  line-height: 120%;
+}
+
 .enter-email {
-  font-size: var(--page-title);
   color: var(--bright-teal);
   padding: 2vh 2vw 4vh 3vw;
   background-color: black;
