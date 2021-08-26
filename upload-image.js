@@ -84,9 +84,10 @@ let postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/u
 createFormData = () => {
   let email = document.getElementById('email');
   let imageFilename = generateJpgName();
+  let file = new File([jpgBlob], imageFilename, { type: 'image/jpeg' });
   let formData = new FormData();
   formData.append("email", email.value);
-  formData.append("data", jpgBlob, imageFilename);
+  formData.append("data", file);
   return formData;
 };
 
