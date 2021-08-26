@@ -49,7 +49,32 @@ canvas.toBlob((blob) => {
 let generateJpgName = () => {
   let uuid = UUID.generate();
   return `sample-jpg-${uuid}.jpg`;
-}
+};
+
+let displayTextResult = (text) => {
+  let results = document.getElementById('results');
+  let html = `
+    <code>${text}</code>
+  `;
+  results.innerHTML = html;
+};
+
+let displayJsonResult = (json) => {
+  let results = document.getElementById('results');
+  let jsonStr = JSON.stringify(json);
+  let html = `
+    <code>${jsonStr}</code>
+  `;
+  results.innerHTML = html;
+};
+
+let displayErrorResult = (error) => {
+  let results = document.getElementById('results');
+  let html = `
+    <code>Error: ${error}</code>
+  `;
+  results.innerHTML = html;
+};
 
 let formNoCors = document.getElementById('form-no-cors');
 let formCors = document.getElementById('form-cors');
@@ -80,11 +105,11 @@ formNoCors.onsubmit = async (e) => {
     .then((data) => {
       return data ? JSON.parse(data) : {};
     })
-    .then(result => {
-      alert(result);
+    .then(json => {
+      displayJsonResult(json);
     })
     .catch(error => {
-      alert('Error:', error);
+      displayErrorResult(error);
     });
 };
 
@@ -100,8 +125,8 @@ formCors.onsubmit = async (e) => {
       body: formData
     })
     .then(response => response.json())
-    .then(json => alert(JSON.stringify(json)))
+    .then(json => displayJsonResult(json))
     .catch(error => {
-      alert('Error:', error);
+      displayErrorResult(error);
     });
 };
