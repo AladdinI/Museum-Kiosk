@@ -81,8 +81,8 @@ let formCors = document.getElementById('form-cors');
 
 let postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/upload_3.php';
 
-createFormData = () => {
-  let email = document.getElementById('email');
+createFormData = (corsSelection) => {
+  let email = document.getElementById('email-' + corsSelection);
   let imageFilename = generateJpgName();
   let file = new File([jpgBlob], imageFilename, { type: 'image/jpeg' });
   let formData = new FormData();
@@ -93,7 +93,7 @@ createFormData = () => {
 
 formNoCors.onsubmit = async (e) => {
   e.preventDefault();
-  let formData = createFormData();
+  let formData = createFormData('no-cors');
   fetch(postUrl, {
       method: 'POST',
       mode: 'no-cors',
@@ -116,7 +116,7 @@ formNoCors.onsubmit = async (e) => {
 
 formCors.onsubmit = async (e) => {
   e.preventDefault();
-  let formData = createFormData();
+  let formData = createFormData('cors');
 
   fetch(postUrl, {
       method: 'POST',
