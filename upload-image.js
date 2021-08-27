@@ -39,7 +39,7 @@ UUID = (function () {
 let canvas = document.getElementById('canvas');
 initializeCanvas(canvas);
 
-let jpgDataUrl = canvas.toDataURL("image/jpeg", 0.9);
+let jpgDataUrl = canvas.toDataURL("image/jpeg");
 let jpgBlob = null;
 
 canvas.toBlob((blob) => {
@@ -49,6 +49,18 @@ canvas.toBlob((blob) => {
 let generateJpgName = () => {
   let uuid = UUID.generate();
   return `sample-jpg-${uuid}.jpg`;
+};
+
+let pngDataUrl = canvas.toDataURL("image/png");
+let pngBlob = null;
+
+canvas.toBlob((blob) => {
+  pngBlob = blob;
+}, "image/png");
+
+let generatePngName = () => {
+  let uuid = UUID.generate();
+  return `sample-png-${uuid}.png`;
 };
 
 let displayTextResult = (text) => {
@@ -79,28 +91,32 @@ let displayErrorResult = (error) => {
 let formNoCors = document.getElementById('form-no-cors');
 let formCors = document.getElementById('form-cors');
 
-let postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/upload_3.php';
+let postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/upload_12.php';
 
-createFormData = (corsSelection) => {
+createPostBody = (corsSelection) => {
   let email = document.getElementById('email-' + corsSelection);
-  let imageFilename = generateJpgName();
-  let file = new File([jpgBlob], imageFilename, { type: 'image/jpeg' });
-  let formData = new FormData();
-  formData.append("email", email.value);
-  formData.append("data", file);
-  return formData;
+  let imageFilename = generatePngName();
+  // let file = new File([jpgBlob], imageFilename, { type: 'image/jpeg' });
+  // let formData = new FormData();
+  // formData.append("email", email.value);
+  // formData.append("data", file);
+  return {
+    img_data: pngDataUrl,
+    imageFilename: imageFilename,
+    email: email.value
+  };
 };
 
 formNoCors.onsubmit = async (e) => {
   e.preventDefault();
-  let formData = createFormData('no-cors');
+  let body = createPostBody('no-cors');
   fetch(postUrl, {
       method: 'POST',
       mode: 'no-cors',
       headers: {
         'Content-Type': 'multipart/form-data'
       },
-      body: formData
+      body: JSON.stringify(body)
     })
     .then(response => response.text())
     .then((data) => {
@@ -116,14 +132,13 @@ formNoCors.onsubmit = async (e) => {
 
 formCors.onsubmit = async (e) => {
   e.preventDefault();
-  let formData = createFormData('cors');
-
+  let body = createPostBody('cors');
   fetch(postUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'multipart/form-data'
       },
-      body: formData
+      body: JSON.stringify(body)
     })
     .then(response => response.json())
     .then(json => displayJsonResult(json))
