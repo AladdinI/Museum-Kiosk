@@ -40,6 +40,10 @@ body {
   height: 300px;
 }
 
+.upload-select {
+  margin: 2em 0em 0em 0em;
+}
+
 .results-container {
   margin: 2em 0em 0em 0em;
 }

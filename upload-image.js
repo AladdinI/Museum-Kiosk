@@ -95,13 +95,25 @@ let postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/u
 
 createPostBody = (corsSelection) => {
   let email = document.getElementById('email-' + corsSelection);
-  let imageFilename = generatePngName();
+  let imageFilename, imageData;
+
+  let imageType = document.getElementById('image-type');
+  switch (imageType.value) {
+  case 'png':
+    imageFilename = generatePngName();
+    imageData = pngDataUrl;
+    break;
+  case 'jpg':
+    imageFilename = generateJpgName();
+    imageData = jpgDataUrl;
+    break;
+  default:
+    imageFilename = generatePngName();
+    imageData = pngDataUrl;
+  }
   // let file = new File([jpgBlob], imageFilename, { type: 'image/jpeg' });
-  // let formData = new FormData();
-  // formData.append("email", email.value);
-  // formData.append("data", file);
   return {
-    img_data: pngDataUrl,
+    img_data: imageData,
     imageFilename: imageFilename,
     email: email.value
   };
