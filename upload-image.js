@@ -91,7 +91,7 @@ let displayErrorResult = (error) => {
 let formNoCors = document.getElementById('form-no-cors');
 let formCors = document.getElementById('form-cors');
 
-let postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/upload_12.php';
+let postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/upload_16.php';
 
 createPostBody = (corsSelection) => {
   let email = document.getElementById('email-' + corsSelection);
