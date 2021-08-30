@@ -8,9 +8,9 @@ function initializeCanvas(c) {
   ctx.globalCompositeOperation = "source-over";
   ctx.fillStyle = 'white';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'rgb(200, 255, 43)';
-  ctx.fillRect(150, 150, 50, 50);
-  ctx.fillStyle = 'rgba(0, 90, 200, 0.5)';
+  ctx.fillStyle = 'rgb(200, 255, 80)';
+  ctx.fillRect(200, 200, 50, 50);
+  ctx.fillStyle = 'rgba(0, 80, 200, 0.5)';
   ctx.fillRect(80, 80, 50, 50);
 }
 ////////////////////////////////////
@@ -77,13 +77,13 @@ let displayErrorResult = (error) => {
 };
 ////////////////////////////////////
 let formCors = document.getElementById('form-cors');
-let postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/upload_15.php';
+let postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/upload_16.php';
 ////////////////////////////////////
 createFormData = () => {
-    let email = document.getElementById('email-cors');
+    let email = document.getElementById('email');
     let imageFilename = generateJpgName();
     
-    var dataURL = canvas.toDataURL("image/png");
+    var dataURL = canvas.toDataURL("image/jpeg");
     //document.getElementById('hidden_data').value = dataURL;
     let data = 
         {
