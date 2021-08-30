@@ -80,7 +80,7 @@ let formCors = document.getElementById('form-cors');
 let postUrl = 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/uploads/upload_16.php';
 ////////////////////////////////////
 createFormData = () => {
-    let email = document.getElementById('email');
+    let email = document.getElementById('email-cors');
     let imageFilename = generateJpgName();
     
     var dataURL = canvas.toDataURL("image/jpeg");
