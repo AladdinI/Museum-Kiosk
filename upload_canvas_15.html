@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Upload image: no-cors and cors</title>
+
+  <!-- https://fonts.google.com/specimen/Rajdhani -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <!-- https://getbootstrap.com/ -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+  <link href="upload-image.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="container-fluid content">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-3 image">
+          <header class="row">image</header>
+          <canvas id='canvas' width="300" height="300"></canvas>
+
+        </div>
+        <div class="enter-email col-6">
+          <header class="row">no-cors</header>
+          <form id="form-no-cors" class="row">
+            <label for="email">Your Email:</label>
+            <input id='email-no-cors' class="col-9" type="text" placeholder="enter email" />
+            <button id="send-image-button" type="submit" class="btn btn-outline-primary btn-small page-navigation-button">
+              SEND IMAGE
+            </button>
+          </form>
+          <header class="row">cors</header>
+          <form id="form-cors" class="row">
+            <label for="email">Your Email:</label>
+            <input id='email-cors' class="col-9" type="text" placeholder="enter email" />
+            <button id="send-image-button" type="submit" class="btn btn-outline-primary btn-small page-navigation-button">
+              SEND IMAGE
+            </button>
+          </form>
+
+          <div class="upload-select">
+            <label for="image-type">Image type: </label>
+            <select name="image-type" id="image-type">
+              <option value="png">png</option>
+              <option value="jpg">jpg</option>
+            </select>
+          </div>
+
+          <div class="results-container">
+            <header>results</header>
+            <div id='results'>results ...</div>
+          </div>
+        </div>
+        <div class="col-3">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Bootstrap JS -->
+  <!-- https://getbootstrap.com/ -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+  <script src="upload_image_15.js"></script>
+
+</body>
+
+
+</html>
