@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kiosk ID Login form</title>
+<link rel="stylesheet" href="assets/css/all.min.css">
+<link rel="stylesheet" href="assets/bootstrap-4.5.0-dist/css/bootstrap.css">
+<script src="assets/js/jquery/jquery.3.4.1.js" ></script> 
+<script src="assets/bootstrap-4.5.0-dist/js/bootstrap.bundle.js"></script>
+</head>
+<body style="background-color: #f0f1f2;">
+<style>
+@charset "utf-8";
+/* CSS Document */
+header .login a.green-accent:hover {
+    color: #333;
+    text-decoration: none;
+}
+header .green-accent {
+    color: #4CAF50;
+}
+header .bg-green-accent {
+    background-color: #4CAF50;
+}
+header .border-green-accent {
+    border: 1px solid #4CAF50;
+}
+header .login {
+    font-size: 1.25rem;
+    text-align: left;
+}
+.gradient-button {
+    margin: 10px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 20px;
+    padding: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #FFF;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 25px;
+}
+.gradient-button:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    margin: 8px 10px 12px;
+}
+.gradient-button-1 {
+    background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%)
+}
+.gradient-button-1:hover {
+    background-position: right center;
+}
+</style>
+<header> 
+  <!--==========================-->
+  <div id="Load_sign_in_overlay" class="Load_sign_in_overlayC"></div>
+  <div id="Load_sign_in_boxpopup" style=" display: none; top: 50%; position: absolute; left: 50%;">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border text-success" role="status"> <span class="sr-only" style="z-index: 1001;">Loading...</span> </div>
+      <span class="text-success px-2 py-2" style="z-index: 1001;">Loading Please Wait...</span> </div>
+  </div>
+  <!--==========================-->
+  <div class="header-border"></div>
+  <div class="card px-5 pt-2 ml-4 mt-4 float-left border-green-accent" style="width:500px;" id="signin_card">
+    <div class="card-body pt-3">
+      <div class="bg-white">
+        <h2 class="text-black text-left h2">Register New Kiosk</h2>
+      </div>
+      <div class="input-group form-group">
+        <input type="text" class="form-control bg-light dark-grey rounded-0" placeholder="email address" id="SignIn_email" name="SignIn_email" tabindex="8">
+      </div>
+      <div class="input-group form-group">
+        <input type="password" class="form-control dark-grey rounded-0 bg-light" placeholder="password" id="SignIn_password" name="SignIn_password" tabindex="9">
+      </div>
+      <div class="input-group form-group mb-0">
+        <input type="text" class="form-control dark-grey rounded-0 bg-light" placeholder="Kiosk ID" id="SignIn_Kiosk_ID" name="SignIn_Kiosk_ID" tabindex="9">
+      </div>
+      <div class="mt-0" style="height:1.5em;">
+        <div id="SignIn_Message" class="text-center error" style="font-size: 11pt;"></div>
+        <div id="CFA_Credential" class="text-center"></div>
+      </div>
+      <div class="row">
+        <div class="col-6 mt-4">
+          <input type="button" id="UserLoginBtn" value="LOGIN" class="btn border-0 btn-sm gradient-button gradient-button-1 w-100 py-2 h2 float-left text-white">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!--=====================--> 
+<script language="javascript" type="text/javascript" src="assets/js/jquery/jquery.validate.js"></script> 
+<script language="javascript">
+var home='assets';
+var motor='process';
+var language='php';
+//////////////////////////////////////////////////////////////////////////////////////////////
+/*========================================*/
+/*========================================*/
+window.onload = function()
+{
+/*========================================*/
+/*========================================*/
+    $( "#UserLoginBtn" ).click(function() 
+    {
+        /////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////
+        var SignIn_email = document.getElementById('SignIn_email');
+		var SignIn_password = document.getElementById("SignIn_password"); 
+		var SignIn_Kiosk_ID = document.getElementById("SignIn_Kiosk_ID"); 
+        $.ajax({
+            type : 'post',
+            dataType : 'json', 
+            url : 'https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/Exhibit_Kiosk_login/'+home+'/'+motor+'/SignIn_Outside_Process.'+language+'',
+            data : {email : SignIn_email.value,password : SignIn_password.value,SignIn_Kiosk_ID : SignIn_Kiosk_ID.value},
+            success: function(response) {
+                if( response.type == true ) 
+                    {
+                        $('#SignIn_Message').addClass("alert-success");
+                        $('#SignIn_Message').removeClass("alert-danger");
+                        $('#SignIn_Message').html('' + response.result + '');
+                        $('#CFA_Credential').html('Kiosk Credential:' + response.CFA_Credential + '');
+                        //setTimeout(function(){window.location = self.location; }, 1500);
+                    }
+                else {
+                        $('#SignIn_Message').addClass("alert-danger");
+                        $('#SignIn_Message').removeClass("alert-success");
+                        $('#SignIn_Message').html('' + response.result + '') ;
+                    };
+            }
+        });
+        /*========================================*/
+    });
+/*========================================*/
+/*========================================*/
+/*========================================*/
+/*========================================*/
+/*========================================*/
+}
+/*========================================*/
+/*========================================*/    
+</script>
+</body>
+</html>
