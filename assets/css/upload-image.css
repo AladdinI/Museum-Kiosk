@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+/* color variables */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties */
+:root {
+  /* colors */
+  --almost-black: #080808;
+  --almost-white: #e8e8e8;
+  --green: #a4d292;
+  --bright-green: #bff5aa;
+  --brighter-green: #cfffbb;
+  --bright-teal: #3ddaf6;
+  --dark-teal: #2b88ac;
+  --bright-blue: #032741;
+  --bright-pink: #f33c85;
+  /* font sizes */
+  --content-font-size: 1.2em;
+  --header-font-size: 1.4em;
+  --results-font-size: 0.8em;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  background-color: var(--almost-black);
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  font-size: var(--content-font-size);
+}
+
+#canvas {
+  border: 1px solid var(--bright-green);
+  width: 300px;
+  height: 300px;
+}
+
+.upload-select {
+  margin: 2em 0em 0em 0em;
+}
+
+.results-container {
+  margin: 2em 0em 0em 0em;
+}
+
+#results {
+  margin: 1em 0em 0em 0em;
+  padding: 1em;
+  height: 40vh;
+  background-color: var(--almost-white);
+  font-size: var(--results-font-size);
+  color: gray;
+}
+
+#results code {
+  color: var(--almost-black);
+  font-size: var(--results-font-size);
+}
+
+header {
+  padding: 1em 0em 0.5em 0em !important;
+  font-size: var(--header-font-size);
+  color: var(--bright-teal);
+}
+
+.image {
+  color: var(--bright-teal);
+  padding: 2vh 2vw 4vh 3vw;
+  background-color: black;
+  line-height: 120%;
+}
+
+.enter-email {
+  color: var(--bright-teal);
+  padding: 2vh 2vw 4vh 3vw;
+  background-color: black;
+  line-height: 120%;
+}
+
+.enter-email label {
+  padding-left: 0;
+  padding-bottom: 0.25vh;
+  line-height: 100%;
+  font-size: var(--send-email-input);
+}
+
+.enter-email input {
+  padding: 0vh 1vh;
+  background-color: black;
+  color: white;
+  border: 1px solid var(--bright-teal);
+  border-radius: 2px;
+  letter-spacing: 1px;
+}
+
+.enter-email input[type="hidden"] {
+  display: none;
+}
+
+.enter-email button {
+  width: 10vw;
+  margin: 0vh 0vh 0vh 2vh;
+}
+
+.enter-email .image-container {
+  margin-left: 2vh;
+  margin-top: 0.5vh;
+  height: 30vh;
+  width: 30vh;
+  padding: 0;
+  background-color: black;
+  border: 2px solid var(--canvas-container-border-color);
+  border-radius: 3px;
+}
+
+.enter-email .image-container img {
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
