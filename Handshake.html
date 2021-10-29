@@ -15,17 +15,17 @@
   <!--==========================-->
   <div class="card px-5 pt-2 ml-4 mt-4 float-left border-green-accent" style="width:800px;">
     <div class="card-body pt-3">
-      <form id="formElem">
+      <form id="Handshake_Form">
         <div class="input-group form-group">
           <label>Kiosk ID</label>
-          <input type="text" class="w-100" name="kiosk_id" value="test_0002">
+          <input type="text" class="w-100" name="kiosk_id" id="kiosk_id" value="test_0002">
         </div>
         <div class="input-group form-group">
           <label>Credential</label>
-          <input type="text" class="w-100" name="credential" value="K2CGAh9OEPcxpB8g7">
+          <input type="text" class="w-100" name="credential" id="credential" value="K2CGAh9OEPcxpB8g7">
         </div>
         <div class="input-group form-group">
-          <input type="submit">
+          <input id="Handshake_Submit" type="submit">
         </div>
       </form>
     </div>
@@ -41,22 +41,6 @@
   </div>
   <!--==========================-->
 </header>
-<script>
-  formElem.onsubmit = async (e) => {
-    e.preventDefault();
-    let response = await fetch('https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/handshake/handshake.php', {
-      method: 'POST',
-      body: new FormData(formElem)
-    });
-      //alert (response);
-    let result = await response.json();
-      document.getElementById('results');
-      let html = `
-    <code>${'message ='+result.message+' <br>kiosk_id = '+result.kiosk_id+'<br>credential = '+result.credential}</code>
-  `;
-  results.innerHTML = html;
-      
-  };
-</script>
+    <script src="assets/js/handshake.js"></script>
 </body>
 </html>

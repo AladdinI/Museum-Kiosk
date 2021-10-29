@@ -15,30 +15,30 @@
   <!--==========================-->
   <div class="card px-5 pt-2 ml-4 mt-4 float-left border-green-accent" style="width:800px;">
     <div class="card-body pt-3">
-      <form id="formElem">
+      <form id="Request_Image_Form">
         <div class="input-group form-group">
           <label>Kiosk ID</label>
-          <input type="text" class="w-100" name="kiosk_id" value="test_0002">
+          <input type="text" class="w-100" name="kiosk_id" id="kiosk_id" value="test_0002">
         </div>
         <div class="input-group form-group">
           <label>User E-mail</label>
-          <input type="text" class="w-100" name="email" value="aibrahim@cfa.harvard.edu">
+          <input type="text" class="w-100" name="email" id="email" value="aibrahim@cfa.harvard.edu">
         </div>
         <div class="input-group form-group">
           <label>Observation Target Name</label>
-          <input type="text" class="w-100" name="observation_name" value="Whirlpool Galaxy (M51)">
+          <input type="text" class="w-100" name="observation_name" id="observation_name" value="Whirlpool Galaxy (M51)">
         </div>
         <div class="input-group form-group">
           <label>Observation Target ID</label>
-          <input type="text" class="w-100" name="observation_id" value="GA2">
+          <input type="text" class="w-100" name="observation_id" id="observation_id" value="GA2">
         </div>
         <div class="input-group form-group">
           <label>Date and Time</label>
-          <input type="text" class="w-100" name="datetime_when_user_made_request_at_kiosk" value="2021-06-03 10:13:36.214899-0400">
+          <input type="text" class="w-100" name="datetime_when_user_made_request_at_kiosk" id="datetime_when_user_made_request_at_kiosk" value="2021-06-03 10:13:36.214899-0400">
         </div>
         <div class="input-group form-group">
           <label>Credential</label>
-          <input type="text" class="w-100" name="credential" value="K2CGAh9OEPcxpB8g7">
+          <input type="text" class="w-100" name="credential" id="credential" value="K2CGAh9OEPcxpB8g7">
         </div>
         <div class="input-group form-group">
           <input type="submit">
@@ -57,22 +57,6 @@
   </div>
   <!--==========================-->
 </header>
-<script>
-  formElem.onsubmit = async (e) => {
-    e.preventDefault();
-    let response = await fetch('https://waps.cfa.harvard.edu/microobservatory/own_kiosk/api/v1/requests/telescope.php', {
-      method: 'POST',
-      body: new FormData(formElem)
-    });
-      //alert (response);
-    let result = await response.json();
-      document.getElementById('results');
-      let html = `
-    <code>${'message ='+result.message+' <br>kiosk_id = '+result.kiosk_id+' <br>email = '+result.email+' <br>observation_name = '+result.observation_name+' <br>observation_id = '+result.observation_id+' <br>datetime_when_user_made_request_at_kiosk = '+result.datetime_when_user_made_request_at_kiosk+' <br>credential = '+result.credential}</code>
-  `;
-  results.innerHTML = html;
-      
-  };
-</script>
+    <script src="assets/js/telescope_request.js"></script>
 </body>
 </html>
