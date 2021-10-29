@@ -84,6 +84,7 @@ createFormData = () => {
     let email = document.getElementById('email-cors');
     let kiosk_id = document.getElementById('kiosk_id_cors');
     let credential = document.getElementById('credential_cors');
+    let activity_name = document.getElementById('activity_name');
     let imageFilename = generateJpgName();
     
     var dataURL = canvas.toDataURL("image/jpeg");
@@ -94,7 +95,8 @@ createFormData = () => {
             imageFilename: imageFilename,
             email: email.value,
             kiosk_id: kiosk_id.value,
-            credential: credential.value
+            credential: credential.value,
+            activity_name: activity_name.value
         };
   return data;
 };
