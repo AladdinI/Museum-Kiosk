@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kiosk Authentication</title>
+<link rel="stylesheet" href="assets/css/all.min.css">
+<link rel="stylesheet" href="assets/css/kiosk.css">
+<link rel="stylesheet" href="assets/bootstrap-4.5.0-dist/css/bootstrap.css">
+<script src="assets/js/jquery/jquery.3.4.1.js" ></script> 
+<script src="assets/bootstrap-4.5.0-dist/js/bootstrap.bundle.js"></script>
+</head>
+<body style="background-color: #f0f1f2;">
+<header> 
+  <!--==========================--> 
+  <!--==========================-->
+  <div class="card px-5 pt-2 ml-4 mt-4 float-left border-green-accent" style="width:800px;">
+    <div class="card-body pt-3">
+      <form id="Handshake_Form">
+        <div class="input-group form-group">
+          <label>Kiosk ID</label>
+          <input type="text" class="w-100" name="kiosk_id" id="kiosk_id" value="test_0002">
+        </div>
+        <div class="input-group form-group">
+          <label>Credential</label>
+          <input type="text" class="w-100" name="credential" id="credential" value="K2CGAh9OEPcxpB8g7">
+        </div>
+        <div class="input-group form-group">
+          <input id="Handshake_Submit" type="submit">
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--==========================-->
+  <div class="card px-5 pt-2 ml-4 mt-4 float-left border-green-accent" style="width:800px;">
+    <div class="card-body pt-3">
+        <div class="results-container">
+            <header>results</header>
+            <div id="results">...</div>
+          </div>
+    </div>
+  </div>
+  <!--==========================-->
+</header>
+    <script src="assets/js/handshake_dev.js"></script>
+</body>
+</html>

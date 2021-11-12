@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Request Telescope Image</title>
+<link rel="stylesheet" href="assets/css/all.min.css">
+<link rel="stylesheet" href="assets/css/kiosk.css">
+<link rel="stylesheet" href="assets/bootstrap-4.5.0-dist/css/bootstrap.css">
+<script src="assets/js/jquery/jquery.3.4.1.js" ></script> 
+<script src="assets/bootstrap-4.5.0-dist/js/bootstrap.bundle.js"></script>
+</head>
+<body style="background-color: #f0f1f2;">
+<header> 
+  <!--==========================--> 
+  <!--==========================-->
+  <div class="card px-5 pt-2 ml-4 mt-4 float-left border-green-accent" style="width:800px;">
+    <div class="card-body pt-3">
+      <form id="Request_Image_Form">
+        <div class="input-group form-group">
+          <label>Kiosk ID</label>
+          <input type="text" class="w-100" name="kiosk_id" id="kiosk_id" value="test_0002">
+        </div>
+        <div class="input-group form-group">
+          <label>User E-mail</label>
+          <input type="text" class="w-100" name="email" id="email" value="aibrahim@cfa.harvard.edu">
+        </div>
+        <div class="input-group form-group">
+          <label>Observation Target Name</label>
+          <input type="text" class="w-100" name="observation_name" id="observation_name" value="Whirlpool Galaxy (M51)">
+        </div>
+        <div class="input-group form-group">
+          <label>Observation Target ID</label>
+          <input type="text" class="w-100" name="observation_id" id="observation_id" value="GA2">
+        </div>
+        <div class="input-group form-group">
+          <label>Date and Time</label>
+          <input type="text" class="w-100" name="datetime_when_user_made_request_at_kiosk" id="datetime_when_user_made_request_at_kiosk" value="2021-06-03 10:13:36.214899-0400">
+        </div>
+        <div class="input-group form-group">
+          <label>Credential</label>
+          <input type="text" class="w-100" name="credential" id="credential" value="K2CGAh9OEPcxpB8g7">
+        </div>
+        <div class="input-group form-group">
+          <input type="submit">
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--==========================-->
+  <div class="card px-5 pt-2 ml-4 mt-4 float-left border-green-accent" style="width:800px;">
+    <div class="card-body pt-3">
+        <div class="results-container">
+            <header>results</header>
+            <div id="results">...</div>
+          </div>
+    </div>
+  </div>
+  <!--==========================-->
+</header>
+    <script src="assets/js/telescope_request_dev.js"></script>
+</body>
+</html>
